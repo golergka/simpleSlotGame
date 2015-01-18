@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System.Linq;
+using System.IO;
 
 public class CellTypeAsset
 {
 	[MenuItem("Assets/Create/CellType")]
-	public static void CreateAsset()
+	public static void CreateCellType()
 	{
 		ScriptableObjectUtility.CreateAsset<CellType>();
 	}

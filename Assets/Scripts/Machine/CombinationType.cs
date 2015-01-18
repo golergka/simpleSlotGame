@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class CombinationType
+public class CombinationType : ScriptableObject
 {
 	public List<CellType> CellTypes;
 

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
+  m_Name: T1 Frig Electronic warfare
+  m_EditorClassIdentifier: 
+  CellTypes:
+  - {fileID: 11400000, guid: 438717793c74346e3a97befc7a62a0e6, type: 2}
+  - {fileID: 11400000, guid: ff0f17435d3ee4410b1722014737309d, type: 2}
+  - {fileID: 11400000, guid: bd1acd51ecca6479fb39890b914cdcd4, type: 2}
+  - {fileID: 11400000, guid: 202c711e774724118b00286d7cc4d5eb, type: 2}

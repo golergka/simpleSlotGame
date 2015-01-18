@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
+  m_Name: Frig Mining
+  m_EditorClassIdentifier: 
+  CellTypes:
+  - {fileID: 11400000, guid: f4b9696b5d6434b139e68202fe42512f, type: 2}
+  - {fileID: 11400000, guid: 5ef78253e521746ed8887adf48b7a4f7, type: 2}
+  - {fileID: 11400000, guid: 842f800e1cf6942018aa9fb15d126e71, type: 2}

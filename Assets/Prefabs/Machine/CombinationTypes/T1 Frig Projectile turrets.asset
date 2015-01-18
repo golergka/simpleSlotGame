@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
+  m_Name: T1 Frig Projectile turrets
+  m_EditorClassIdentifier: 
+  CellTypes:
+  - {fileID: 11400000, guid: 34c4767fa938443ebb19da3825f38bcc, type: 2}
+  - {fileID: 11400000, guid: d2fa2d58e4a48498fbc6976803cb4b6f, type: 2}

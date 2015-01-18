@@ -5,7 +5,7 @@ using System.Collections;
 public class MachineAsset
 {
 	[MenuItem("Assets/Create/Machine")]
-	public static void CreateAsset()
+	public static void CreateMachine()
 	{
 		ScriptableObjectUtility.CreateAsset<Machine>();
 	}

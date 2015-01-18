@@ -32,6 +32,7 @@ public class UIMachine : MonoBehaviour
 		{
 			CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);
 		}
+		StartCoroutine(ShowWinnersCoroutine(_Spin.CombinationsWon));
 	}
 
 	void CreateReel(Reel _Reel, int _Index, int _MaxIndex)
@@ -45,6 +46,19 @@ public class UIMachine : MonoBehaviour
 		reelTransform.anchorMax = new Vector2((1 + (float) _Index) / _MaxIndex, 1);
 
 		reel.FillReel(_Reel);
+	}
+
+	IEnumerator ShowWinnersCoroutine(ReadOnlyCollection<Combination> _Combinations)
+	{
+		foreach(var combination in _Combinations)
+		{
+			foreach(var cell in combination.Cells)
+			{
+				var uiCell = UICell.GetCell(cell);
+				uiCell.ShowWinner(1f);
+			}
+			yield return new WaitForSeconds(1f);
+		}
 	}
 
 	#endregion

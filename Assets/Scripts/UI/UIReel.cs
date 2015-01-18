@@ -39,6 +39,8 @@ public class UIReel : MonoBehaviour
 		var cellTransform = (RectTransform) cell.transform;
 		cellTransform.anchorMin = new Vector2(0, (float) _Index / _MaxIndex);
 		cellTransform.anchorMax = new Vector2(1, (1 + (float) _Index) / _MaxIndex);
+		
+		cell.Cell = _Cell;
 	}
 
 	#endregion

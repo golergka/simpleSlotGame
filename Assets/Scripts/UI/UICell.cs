@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class UICell : MonoBehaviour
@@ -12,17 +13,8 @@ public class UICell : MonoBehaviour
 		set
 		{
 			m_Cell = value;
-			throw new System.NotImplementedException();
+			GetComponent<Image>().sprite = value.Type.Image;
 		}
-	}
-
-	#endregion
-
-	#region Animations
-
-	public void AnimateWin()
-	{
-		throw new System.NotImplementedException();
 	}
 
 	#endregion

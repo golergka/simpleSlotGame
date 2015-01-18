@@ -19,6 +19,10 @@ public class Game : MonoBehaviour
 
 	public void Spin()
 	{
-		UIMachine.PresentSpin(new Spin(Machine, Machine.Lines.AsReadOnly()));
+		UIMachine.PresentSpin(new Spin(
+				Machine, 
+				Machine.Lines.AsReadOnly(),
+				new System.Random()
+			));
 	}
 }

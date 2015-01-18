@@ -9,7 +9,8 @@ public class Spin
 
 	public Spin(
 			Machine						_Machine, 
-			ReadOnlyCollection<Line>	_ActiveLines
+			ReadOnlyCollection<Line>	_ActiveLines,
+			Random						_Random
 		)
 	{
 		// Generating reels
@@ -17,7 +18,11 @@ public class Spin
 			var reels = new List<Reel>(_Machine.ReelCount);
 			for(int i = 0; i < _Machine.ReelCount; i++)
 			{
-				reels.Add(new Reel(_Machine.CellCount, _Machine.CellTypes.AsReadOnly()));
+				reels.Add(new Reel(
+							_Machine.CellCount, 
+							_Machine.CellTypes.AsReadOnly(),
+							_Random
+					));
 			}
 			Reels = reels.AsReadOnly();
 		}

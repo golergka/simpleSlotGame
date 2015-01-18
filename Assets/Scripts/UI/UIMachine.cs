@@ -21,7 +21,7 @@ public class UIMachine : MonoBehaviour
 
 	#region Animations
 
-	void PresentSpin(Spin _Spin)
+	public void PresentSpin(Spin _Spin)
 	{
 		foreach(var r in m_Reels)
 		{
@@ -41,8 +41,10 @@ public class UIMachine : MonoBehaviour
 		m_Reels.Add(reel);
 
 		var reelTransform = (RectTransform) reel.transform;
-		reelTransform.anchorMin = new Vector2(_Index / _MaxIndex, 0);
-		reelTransform.anchorMax = new Vector2((1 + _Index) / _MaxIndex, 1);
+		reelTransform.anchorMin = new Vector2((float)_Index / _MaxIndex, 0);
+		reelTransform.anchorMax = new Vector2((1 + (float) _Index) / _MaxIndex, 1);
+
+		reel.FillReel(_Reel);
 	}
 
 	#endregion

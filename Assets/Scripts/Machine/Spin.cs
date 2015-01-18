@@ -8,8 +8,8 @@ public class Spin
 	#region Construction
 
 	public Spin(
-			Machine				_Machine, 
-			IEnumerable<Line>	_ActiveLines
+			Machine						_Machine, 
+			ReadOnlyCollection<Line>	_ActiveLines
 		)
 	{
 		// Generating reels
@@ -17,7 +17,7 @@ public class Spin
 			var reels = new List<Reel>(_Machine.ReelCount);
 			for(int i = 0; i < _Machine.ReelCount; i++)
 			{
-				reels.Add(new Reel(_Machine.CellCount, _Machine.CellTypes));
+				reels.Add(new Reel(_Machine.CellCount, _Machine.CellTypes.AsReadOnly()));
 			}
 			Reels = reels.AsReadOnly();
 		}
@@ -59,7 +59,9 @@ public class Spin
 		var result = new List<Cell>();
 		for(int i = 0; i < _Line.Cells.Length; i++)
 		{
-			result[i] = Reels[i].Cells[_Line.Cells[i]];
+			var cellIndex = _Line.Cells[i];
+			var reel = Reels[i];
+			result.Add(reel.Cells[cellIndex]);
 		}
 		return result;
 	}

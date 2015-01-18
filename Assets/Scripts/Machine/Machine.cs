@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
-public class Machine
+public class Machine : ScriptableObject
 {
 	public int						ReelCount;
 	public int						CellCount;

@@ -1,6 +1,8 @@
 using System;
+using UnityEngine;
 
-public class CellType
+[Serializable]
+public class CellType : ScriptableObject
 {
 
 }

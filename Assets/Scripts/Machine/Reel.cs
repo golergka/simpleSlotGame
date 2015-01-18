@@ -7,12 +7,18 @@ public class Reel
 	#region Construction
 
 	public Reel(
-			int						_CellCount,
-			IEnumerable<CellType>	_CellTypes
+			int								_CellCount,
+			ReadOnlyCollection<CellType>	_CellTypes
 		)
 	{
 		var cells = new List<Cell>(_CellCount);
-		var types = _CellTypes.TakeRandom(_CellCount);
+		var r = new Random();
+		var types = new List<CellType>(_CellCount);
+		for (var i = 0; i < _CellCount; i++)
+		{
+			var k = r.Next(0, _CellTypes.Count);
+			types.Add(_CellTypes[k]);
+		}
 		foreach(var t in types)
 		{
 			cells.Add(new Cell(t));

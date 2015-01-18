@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 // Represents a single spin result
 public class Spin
 {
+	#region Construction
+
 	public Spin(
 			Machine				_Machine, 
 			IEnumerable<Line>	_ActiveLines
@@ -37,8 +39,16 @@ public class Spin
 		CombinationsWon = combinationsWon.AsReadOnly();
 	}
 
+	#endregion
+
+	#region Public fields
+
 	readonly public ReadOnlyCollection<Reel>		Reels;
 	readonly public ReadOnlyCollection<Combination>	CombinationsWon;
+
+	#endregion
+
+	#region Helper methods
 
 	IEnumerable<Cell> CellsOnLine(Line _Line)
 	{
@@ -53,5 +63,7 @@ public class Spin
 		}
 		return result;
 	}
+
+	#endregion
 
 }

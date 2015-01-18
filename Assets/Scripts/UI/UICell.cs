@@ -3,17 +3,18 @@ using System.Collections;
 
 public class UICell : MonoBehaviour
 {
-	#region Initialization
+	#region Public interface
 
-	public void PresentCell(Cell _Cell)
+	Cell m_Cell;
+	public Cell Cell
 	{
+		get { return m_Cell; }
+		set
+		{
+			m_Cell = value;
+			throw new System.NotImplementedException();
+		}
 	}
-
-	#endregion
-
-	#region State
-
-	Cell Cell;
 
 	#endregion
 

@@ -9,64 +9,40 @@ public class UIMachine : MonoBehaviour
 
 	#region Configuration
 
-	public UICell CellPrefab;
+	public UIReel ReelPrefab;
 
 	#endregion
 
 	#region Current state
 
-	List<UICell>	m_Cells;
+	List<UIReel>	m_Reels = new List<UIReel>();
 
 	#endregion
 
 	#region Animations
 
-	IEnumerator PresentSpin(Spin _Spin)
+	void PresentSpin(Spin _Spin)
 	{
-		var clear = ClearSpin();
-		while (clear.MoveNext()) { yield return clear.Current; }
-
-		var field = FillField(_Spin.Reels);
-		while(field.MoveNext()) { yield return field.Current; }
-
-		foreach(var u in m_Cells)
+		foreach(var r in m_Reels)
 		{
-			u.AnimateWin();
+			Destroy(r.gameObject);
+		}
+		m_Reels.Clear();
+		for(int i = 0; i < _Spin.Reels.Count; i++)
+		{
+			CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);
 		}
 	}
 
-	IEnumerator ClearSpin()
+	void CreateReel(Reel _Reel, int _Index, int _MaxIndex)
 	{
-		return null;
-	}
+		var reel = (UIReel) Instantiate(ReelPrefab, Vector3.zero, Quaternion.identity);
+		reel.transform.SetParent(transform, false);
+		m_Reels.Add(reel);
 
-	IEnumerator FillField(ReadOnlyCollection<Reel> _Reels)
-	{
-		for(int i = 0; i < _Reels.Count; i++)
-		{
-			var reel = FillReel(_Reels[i], i);
-			while(reel.MoveNext())
-			{
-				yield return reel.Current;
-			}
-		}
-	}
-
-	IEnumerator FillReel(Reel _Reel, int _ReelIndex)
-	{
-		for(int i = 0; i < _Reel.Cells.Count; i++)
-		{
-			var cell = FillCell(_Reel.Cells[i], _ReelIndex, i);
-			while(cell.MoveNext())
-			{
-				yield return cell.Current;
-			}
-		}
-	}
-
-	IEnumerator FillCell(Cell _Cell, int _ReelIndex, int _CellIndex)
-	{
-		return null;
+		var reelTransform = (RectTransform) reel.transform;
+		reelTransform.anchorMin = new Vector2(_Index / _MaxIndex, 0);
+		reelTransform.anchorMax = new Vector2((1 + _Index) / _MaxIndex, 1);
 	}
 
 	#endregion

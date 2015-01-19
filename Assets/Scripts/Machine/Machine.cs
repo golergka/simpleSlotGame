@@ -10,4 +10,12 @@ public class Machine : ScriptableObject
 	public List<Line>				Lines;
 	public List<CellType>			CellTypes;
 	public List<CombinationType>	CombinationTypes;
+
+	public IEnumerable<Line> TakeLines(int _Amount)
+	{
+		for(int i = 0; i < _Amount; i++)
+		{
+			yield return Lines[i];
+		}
+	}
 }

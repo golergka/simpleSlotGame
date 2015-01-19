@@ -9,13 +9,13 @@ public class UIMachine : MonoBehaviour
 
 	#region Configuration
 
-	public UIReel ReelPrefab;
+	public UICell CellPrefab;
 
 	#endregion
 
 	#region Current state
 
-	List<UIReel>	m_Reels = new List<UIReel>();
+	Dictionary<Cell, UICell> m_Cells = new Dictionary<Cell, UICell>();
 
 	#endregion
 
@@ -23,41 +23,31 @@ public class UIMachine : MonoBehaviour
 
 	public void PresentSpin(Spin _Spin)
 	{
-		foreach(var r in m_Reels)
+		foreach(var r in m_Cells.Values)
 		{
 			Destroy(r.gameObject);
 		}
-		m_Reels.Clear();
+		m_Cells.Clear();
 		for(int i = 0; i < _Spin.Reels.Count; i++)
 		{
 			CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);
 		}
-		StartCoroutine(ShowWinnersCoroutine(_Spin.CombinationsWon));
+		//StartCoroutine(ShowWinnersCoroutine(_Spin.CombinationsWon));
 	}
 
 	void CreateReel(Reel _Reel, int _Index, int _MaxIndex)
 	{
-		var reel = (UIReel) Instantiate(ReelPrefab, Vector3.zero, Quaternion.identity);
-		reel.transform.SetParent(transform, false);
-		m_Reels.Add(reel);
-
-		var reelTransform = (RectTransform) reel.transform;
-		reelTransform.anchorMin = new Vector2((float)_Index / _MaxIndex, 0);
-		reelTransform.anchorMax = new Vector2((1 + (float) _Index) / _MaxIndex, 1);
-
-		reel.FillReel(_Reel);
-	}
-
-	IEnumerator ShowWinnersCoroutine(ReadOnlyCollection<Combination> _Combinations)
-	{
-		foreach(var combination in _Combinations)
+		for(int i = 0; i < _Reel.Cells.Count; i++)
 		{
-			foreach(var cell in combination.Cells)
-			{
-				var uiCell = UICell.GetCell(cell);
-				uiCell.ShowWinner(1f);
-			}
-			yield return new WaitForSeconds(1f);
+			var cell = (UICell) Instantiate(CellPrefab, Vector3.zero, Quaternion.identity);
+			cell.transform.SetParent(transform, false);
+
+			var cellTransform = (RectTransform) cell.transform;
+			cellTransform.anchorMin = new Vector2((float) _Index / _MaxIndex, (float)i / _Reel.Cells.Count);
+			cellTransform.anchorMax = new Vector2((float)(_Index + 1) / _MaxIndex, (float)(i + 1) / _Reel.Cells.Count);
+
+			cell.Cell = _Reel.Cells[i];
+			m_Cells[_Reel.Cells[i]] = cell;
 		}
 	}
 

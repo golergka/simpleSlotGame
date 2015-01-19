@@ -9,12 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
-  m_Name: T1 Frig Hybrid turrets
+  m_Name: Caldari
   m_EditorClassIdentifier: 
   Kind: 0
-  Name: T1 Hybrid turret frigates
+  Name: Caldari
   CellTypes:
+  - {fileID: 11400000, guid: f4b9696b5d6434b139e68202fe42512f, type: 2}
+  - {fileID: 11400000, guid: c02521218c3974181b2c764365d76313, type: 2}
+  - {fileID: 11400000, guid: 202c711e774724118b00286d7cc4d5eb, type: 2}
+  - {fileID: 11400000, guid: 9fbf31b38f2e54190ac48c250c60f7a9, type: 2}
+  - {fileID: 11400000, guid: 592295c5afb9048a580b8e64ed058b5f, type: 2}
   - {fileID: 11400000, guid: 5660fc8521fe84a54a810f1887baf263, type: 2}
-  - {fileID: 11400000, guid: a6f65d3ca0b2c4c67afa8fcc2247ed54, type: 2}
-  - {fileID: 11400000, guid: d735a06970f664236ac63423720f68e8, type: 2}
-  - {fileID: 11400000, guid: a7dc47f11368442f596e40e0f3f0a625, type: 2}

@@ -9,12 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
-  m_Name: T1 Frig Exploration
+  m_Name: Minmantar
   m_EditorClassIdentifier: 
   Kind: 0
-  Name: T1 Exploration frigates
+  Name: Minmatar
   CellTypes:
-  - {fileID: 11400000, guid: 1ac56de46be234390a11fe57a7f18fa9, type: 2}
-  - {fileID: 11400000, guid: 9fbf31b38f2e54190ac48c250c60f7a9, type: 2}
-  - {fileID: 11400000, guid: 8a4a655091391431d9619aa963294407, type: 2}
+  - {fileID: 11400000, guid: 833a2b25103e147b2a7ebc6ea0d87697, type: 2}
+  - {fileID: 11400000, guid: 842f800e1cf6942018aa9fb15d126e71, type: 2}
   - {fileID: 11400000, guid: 37bcec5cf960c4cd8bbd10c2c0d33fd4, type: 2}
+  - {fileID: 11400000, guid: 34c4767fa938443ebb19da3825f38bcc, type: 2}
+  - {fileID: 11400000, guid: d2fa2d58e4a48498fbc6976803cb4b6f, type: 2}
+  - {fileID: 11400000, guid: ff0f17435d3ee4410b1722014737309d, type: 2}

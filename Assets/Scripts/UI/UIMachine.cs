@@ -21,13 +21,21 @@ public class UIMachine : MonoBehaviour
 
 	#region Animations
 
+	IEnumerator m_PresentSpin;
+
 	public void PresentSpin(Spin _Spin)
 	{
-		if (m_ShowWinnerCoroutine != null)
+		if (m_PresentSpin != null)
 		{
-			StopCoroutine(m_ShowWinnerCoroutine);
-			m_ShowWinnerCoroutine = null;
+			StopCoroutine(m_PresentSpin);
+			m_PresentSpin = null;
 		}
+		m_PresentSpin = PresentSpinCoroutine(_Spin);
+		StartCoroutine(m_PresentSpin);
+	}
+
+	IEnumerator PresentSpinCoroutine(Spin _Spin)
+	{
 		foreach(var r in m_Cells.Values)
 		{
 			Destroy(r.gameObject);
@@ -35,13 +43,16 @@ public class UIMachine : MonoBehaviour
 		m_Cells.Clear();
 		for(int i = 0; i < _Spin.Reels.Count; i++)
 		{
-			CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);
+			var createReel = CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);
+			while (createReel.MoveNext())
+			{ yield return createReel.Current; }
 		}
-		m_ShowWinnerCoroutine = ShowWinnersCoroutine(_Spin.CombinationsWon);
-		StartCoroutine(m_ShowWinnerCoroutine);
+		var showWinner = ShowWinnersCoroutine(_Spin.CombinationsWon);
+		while (showWinner.MoveNext())
+		{ yield return showWinner.Current; }
 	}
 
-	void CreateReel(Reel _Reel, int _Index, int _MaxIndex)
+	IEnumerator CreateReel(Reel _Reel, int _Index, int _MaxIndex)
 	{
 		for(int i = 0; i < _Reel.Cells.Count; i++)
 		{
@@ -54,10 +65,12 @@ public class UIMachine : MonoBehaviour
 
 			cell.Cell = _Reel.Cells[i];
 			m_Cells[_Reel.Cells[i]] = cell;
+			
+			var putCell = cell.PutCell();
+			while(putCell.MoveNext())
+			{ yield return putCell.Current; }
 		}
 	}
-
-	IEnumerator m_ShowWinnerCoroutine;
 
 	IEnumerator ShowWinnersCoroutine(IEnumerable<Combination> _Combinations)
 	{
@@ -67,6 +80,7 @@ public class UIMachine : MonoBehaviour
 			{
 				m_Cells[cell].Highlight = true;
 			}
+			//Debug.Log("Combination: " + combination.Type.Name);
 			yield return new WaitForSeconds(0.5f);
 			foreach(var cell in combination.Cells)
 			{

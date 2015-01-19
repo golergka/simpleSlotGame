@@ -9,12 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
-  m_Name: T1 Frig Exploration
+  m_Name: Amarr
   m_EditorClassIdentifier: 
   Kind: 0
-  Name: T1 Exploration frigates
+  Name: Amarr
   CellTypes:
+  - {fileID: 11400000, guid: 438717793c74346e3a97befc7a62a0e6, type: 2}
+  - {fileID: 11400000, guid: d6a92a9aabf074fdd8421b11cbd9e59b, type: 2}
+  - {fileID: 11400000, guid: 486da1211887e4435a96fd11ebcf0192, type: 2}
   - {fileID: 11400000, guid: 1ac56de46be234390a11fe57a7f18fa9, type: 2}
-  - {fileID: 11400000, guid: 9fbf31b38f2e54190ac48c250c60f7a9, type: 2}
-  - {fileID: 11400000, guid: 8a4a655091391431d9619aa963294407, type: 2}
-  - {fileID: 11400000, guid: 37bcec5cf960c4cd8bbd10c2c0d33fd4, type: 2}
+  - {fileID: 11400000, guid: 4817094eb007c4302ae6622e64f791ee, type: 2}
+  - {fileID: 11400000, guid: b38d90e6df20f468794a51dff18fab3a, type: 2}

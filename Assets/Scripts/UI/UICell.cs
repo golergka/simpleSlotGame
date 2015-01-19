@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(RectTransform))]
 public class UICell : MonoBehaviour
 {
 	#region Configuration
@@ -12,6 +13,9 @@ public class UICell : MonoBehaviour
 
 	public Color UsualBackground;
 	public Color HighlightBackground;
+
+	public Vector2	PutOffset;
+	public float	PutTime;
 
 	#endregion
 
@@ -32,21 +36,18 @@ public class UICell : MonoBehaviour
 
 	#region Animations
 
-	public void ShowWinner(float _Seconds)
+	public IEnumerator PutCell()
 	{
-		var c = ShowWinnerCoroutine(_Seconds);
-		StartCoroutine(c);
-	}
-
-	IEnumerator ShowWinnerCoroutine(float _Seconds)
-	{
-		var color = Background.color;
-		var a = color.a;
-		color.a = 1f;
-		Background.color = color;
-		yield return new WaitForSeconds(_Seconds);
-		color.a = a;
-		Background.color = color;
+		var rectTransform = (RectTransform) transform;
+		rectTransform.anchoredPosition = PutOffset;
+		var finishTime = Time.time + PutTime;
+		do
+		{
+			yield return new WaitForEndOfFrame();
+			rectTransform.anchoredPosition += -PutOffset * (Time.deltaTime / PutTime);
+		}
+		while(Time.time < finishTime);
+		rectTransform.anchoredPosition = Vector2.zero;
 	}
 
 	bool m_Highlight;

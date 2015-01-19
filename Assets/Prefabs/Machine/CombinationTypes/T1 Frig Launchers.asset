@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
   m_Name: T1 Frig Launchers
   m_EditorClassIdentifier: 
+  Kind: 0
+  Name: T1 Missile frigates
   CellTypes:
   - {fileID: 11400000, guid: c02521218c3974181b2c764365d76313, type: 2}
   - {fileID: 11400000, guid: 592295c5afb9048a580b8e64ed058b5f, type: 2}

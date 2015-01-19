@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
   m_Name: T1 Frig Electronic warfare
   m_EditorClassIdentifier: 
+  Kind: 0
+  Name: T1 Electronic Warfare frigates
   CellTypes:
   - {fileID: 11400000, guid: 438717793c74346e3a97befc7a62a0e6, type: 2}
   - {fileID: 11400000, guid: ff0f17435d3ee4410b1722014737309d, type: 2}

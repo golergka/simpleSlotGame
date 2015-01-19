@@ -66,6 +66,8 @@ MonoBehaviour:
   Background: {fileID: 11489204}
   UsualBackground: {r: 1, g: 1, b: 1, a: 1}
   HighlightBackground: {r: 1, g: 0, b: 0, a: 1}
+  PutOffset: {x: 0, y: 100}
+  PutTime: .0500000007
 --- !u!114 &11471814
 MonoBehaviour:
   m_ObjectHideFlags: 1

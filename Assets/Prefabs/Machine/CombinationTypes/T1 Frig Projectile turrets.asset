@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce9568e8d1c44dbdaa4639dac1070f5, type: 3}
   m_Name: T1 Frig Projectile turrets
   m_EditorClassIdentifier: 
+  Kind: 0
+  Name: T1 Projective turret frigates
   CellTypes:
   - {fileID: 11400000, guid: 34c4767fa938443ebb19da3825f38bcc, type: 2}
   - {fileID: 11400000, guid: d2fa2d58e4a48498fbc6976803cb4b6f, type: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReelCount: 5
   CellCount: 3
+  MinLines: 3
   Lines:
   - Cells: 0000000000000000000000000000000000000000
   - Cells: 0100000001000000010000000100000001000000

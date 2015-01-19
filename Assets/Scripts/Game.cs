@@ -22,7 +22,7 @@ public class Game : MonoBehaviour
 	{
 		Instance = this;
 		m_Bet = MinBet;
-		m_Lines = 1;
+		m_Lines = Machine.MinLines;
 	}
 
 	#endregion
@@ -33,7 +33,7 @@ public class Game : MonoBehaviour
 	{
 		UIMachine.PresentSpin(new Spin(
 				Machine, 
-				Machine.Lines.AsReadOnly(),
+				Machine.TakeLines(m_Lines),
 				new System.Random()
 			));
 	}
@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
 
 	public bool CanDecreaseLines()
 	{
-		return m_Lines > 1;
+		return m_Lines > Machine.MinLines;
 	}
 
 	public void IncreaseLines()

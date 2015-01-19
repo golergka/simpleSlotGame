@@ -7,6 +7,7 @@ public class Machine : ScriptableObject
 {
 	public int						ReelCount;
 	public int						CellCount;
+	public int						MinLines;
 	public List<Line>				Lines;
 	public List<CellType>			CellTypes;
 	public List<CombinationType>	CombinationTypes;

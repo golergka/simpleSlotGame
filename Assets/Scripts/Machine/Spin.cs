@@ -8,9 +8,9 @@ public class Spin
 	#region Construction
 
 	public Spin(
-			Machine						_Machine, 
-			ReadOnlyCollection<Line>	_ActiveLines,
-			Random						_Random
+			Machine				_Machine, 
+			IEnumerable<Line>	_ActiveLines,
+			Random				_Random
 		)
 	{
 		// Generating reels

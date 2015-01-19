@@ -23,6 +23,11 @@ public class UIMachine : MonoBehaviour
 
 	public void PresentSpin(Spin _Spin)
 	{
+		if (m_ShowWinnerCoroutine != null)
+		{
+			StopCoroutine(m_ShowWinnerCoroutine);
+			m_ShowWinnerCoroutine = null;
+		}
 		foreach(var r in m_Cells.Values)
 		{
 			Destroy(r.gameObject);
@@ -32,7 +37,8 @@ public class UIMachine : MonoBehaviour
 		{
 			CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);
 		}
-		//StartCoroutine(ShowWinnersCoroutine(_Spin.CombinationsWon));
+		m_ShowWinnerCoroutine = ShowWinnersCoroutine(_Spin.CombinationsWon);
+		StartCoroutine(m_ShowWinnerCoroutine);
 	}
 
 	void CreateReel(Reel _Reel, int _Index, int _MaxIndex)
@@ -48,6 +54,24 @@ public class UIMachine : MonoBehaviour
 
 			cell.Cell = _Reel.Cells[i];
 			m_Cells[_Reel.Cells[i]] = cell;
+		}
+	}
+
+	IEnumerator m_ShowWinnerCoroutine;
+
+	IEnumerator ShowWinnersCoroutine(IEnumerable<Combination> _Combinations)
+	{
+		foreach(var combination in _Combinations)
+		{
+			foreach(var cell in combination.Cells)
+			{
+				m_Cells[cell].Highlight = true;
+			}
+			yield return new WaitForSeconds(0.5f);
+			foreach(var cell in combination.Cells)
+			{
+				m_Cells[cell].Highlight = false;
+			}
 		}
 	}
 

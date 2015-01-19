@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3526b9dd4437a41d9824e418147b3a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReelPrefab: {fileID: 11462444, guid: 239c6e7dd3b4d4b24a6162e18530dbba, type: 2}
+  CellPrefab: {fileID: 11438786, guid: cb4b51b67b21548e59e6be06462feaaf, type: 2}
 --- !u!1 &202268469
 GameObject:
   m_ObjectHideFlags: 0

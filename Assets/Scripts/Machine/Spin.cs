@@ -19,6 +19,7 @@ public class Spin
 			for(int i = 0; i < _Machine.ReelCount; i++)
 			{
 				reels.Add(new Reel(
+							i,
 							_Machine.CellCount, 
 							_Machine.CellTypes.AsReadOnly(),
 							_Random

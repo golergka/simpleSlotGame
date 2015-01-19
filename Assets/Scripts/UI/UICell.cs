@@ -5,21 +5,13 @@ using System.Collections.Generic;
 
 public class UICell : MonoBehaviour
 {
-	#region Static UICell directory
-
-	static Dictionary<Cell, UICell> m_Cells = new Dictionary<Cell, UICell>();
-
-	public static UICell GetCell(Cell _Cell)
-	{
-		return (m_Cells.ContainsKey(_Cell) ? m_Cells[_Cell] : null);
-	}
-
-	#endregion
-
 	#region Configuration
 
 	public Image Image;
 	public Image Background;
+
+	public Color UsualBackground;
+	public Color HighlightBackground;
 
 	#endregion
 
@@ -31,16 +23,8 @@ public class UICell : MonoBehaviour
 		get { return m_Cell; }
 		set
 		{
-			if (m_Cell != null)
-			{
-				m_Cells.Remove(m_Cell);
-			}
 			m_Cell = value;
 			Image.sprite = value.Type.Image;
-			if (value != null)
-			{
-				m_Cells[value] = this;
-			}
 		}
 	}
 
@@ -65,17 +49,17 @@ public class UICell : MonoBehaviour
 		Background.color = color;
 	}
 
-	#endregion
-
-	#region Engine methods
-
-	void OnDestroy()
+	bool m_Highlight;
+	public bool Highlight
 	{
-		if (m_Cell != null)
+		get { return m_Highlight; }
+		set
 		{
-			m_Cells.Remove(m_Cell);
+			Background.color = value ? HighlightBackground : UsualBackground;
+			m_Highlight = value;
 		}
 	}
 
 	#endregion
+
 }

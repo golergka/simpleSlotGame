@@ -9,7 +9,8 @@ public class UIMachine : MonoBehaviour
 
 	#region Configuration
 
-	public UICell CellPrefab;
+	public UICell	CellPrefab;
+	public float	DropDelay;
 
 	#endregion
 
@@ -38,9 +39,10 @@ public class UIMachine : MonoBehaviour
 	{
 		foreach(var r in m_Cells.Values)
 		{
-			Destroy(r.gameObject);
+			r.DropCell();
 		}
 		m_Cells.Clear();
+		yield return new WaitForSeconds(DropDelay);
 		for(int i = 0; i < _Spin.Reels.Count; i++)
 		{
 			var createReel = CreateReel(_Spin.Reels[i], i, _Spin.Reels.Count);

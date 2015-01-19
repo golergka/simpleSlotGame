@@ -67,7 +67,12 @@ MonoBehaviour:
   UsualBackground: {r: 1, g: 1, b: 1, a: 1}
   HighlightBackground: {r: 1, g: 0, b: 0, a: 1}
   PutOffset: {x: 0, y: 100}
+  PutRandom: {x: 5, y: 0}
   PutTime: .0500000007
+  DropOffset: {x: 0, y: -600}
+  DropRandom: {x: 50, y: 0}
+  DropDelay: .200000003
+  DropTime: .200000003
 --- !u!114 &11471814
 MonoBehaviour:
   m_ObjectHideFlags: 1

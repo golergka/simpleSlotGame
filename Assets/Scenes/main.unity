@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CellPrefab: {fileID: 11438786, guid: cb4b51b67b21548e59e6be06462feaaf, type: 2}
+  DropDelay: .600000024
 --- !u!1 &202268469
 GameObject:
   m_ObjectHideFlags: 0

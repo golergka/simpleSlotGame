@@ -11,12 +11,22 @@ public class UIMachine : MonoBehaviour
 
 	public UICell	CellPrefab;
 	public float	DropDelay;
+	public Game		Game;
 
 	#endregion
 
 	#region Current state
 
 	Dictionary<Cell, UICell> m_Cells = new Dictionary<Cell, UICell>();
+
+	#endregion
+
+	#region Engine methods
+
+	void Start()
+	{
+		Game.OnSpin += PresentSpin;
+	}
 
 	#endregion
 

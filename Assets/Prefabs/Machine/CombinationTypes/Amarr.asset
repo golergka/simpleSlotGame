@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ac56de46be234390a11fe57a7f18fa9, type: 2}
   - {fileID: 11400000, guid: 4817094eb007c4302ae6622e64f791ee, type: 2}
   - {fileID: 11400000, guid: b38d90e6df20f468794a51dff18fab3a, type: 2}
+  Payout: 3

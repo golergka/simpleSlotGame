@@ -16,6 +16,7 @@ public class CombinationType : ScriptableObject
 	public CombinationKind	Kind;
 	public string			Name;
 	public List<CellType>	CellTypes;
+	public float			Payout;
 
 	#endregion
 

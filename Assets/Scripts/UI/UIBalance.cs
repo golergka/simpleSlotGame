@@ -41,6 +41,10 @@ public class UIBalance : MonoBehaviour
 		{
 			TotalBet.text = _TotalBet.ToString();
 		});
+		Game.OnSpin += delegate(Spin _Spin)
+		{
+			TotalWin.text = _Spin.TotalWin.ToString();
+		};
 	}
 
 	#endregion

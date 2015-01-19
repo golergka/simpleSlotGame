@@ -8,7 +8,6 @@ public class Game : MonoBehaviour
 	#region Configuration
 
 	public Machine		Machine;
-	public UIMachine	UIMachine;
 
 	public int MinBet;
 	public int MaxBet;
@@ -27,22 +26,54 @@ public class Game : MonoBehaviour
 
 	#endregion
 
-	#region Public interface
+	#region Spinning
+
+	public void MaxLines()
+	{
+		Lines = Machine.Lines.Count;
+		Spin();
+	}
 
 	public void Spin()
 	{
-		UIMachine.PresentSpin(new Spin(
-				Machine, 
-				Machine.TakeLines(m_Lines),
-				new System.Random()
-			));
+		if (OnSpin != null)
+		{
+			OnSpin(new Spin(
+					Machine, 
+					Machine.TakeLines(m_Lines),
+					new System.Random(),
+					Bet
+				));
+		}
 	}
+
+	public event System.Action<Spin> OnSpin;
 
 	#endregion
 
 	#region Lines
 
 	int m_Lines;
+	int Lines
+	{
+		get { return m_Lines; }
+		set
+		{
+			if ((value > m_Lines && CanIncreaseLines())
+			|| (value < m_Lines && CanDecreaseLines()))
+			{
+				m_Lines = value;
+				if (m_OnLines != null)
+				{
+					m_OnLines(m_Lines);
+				}
+				if (m_OnTotalBet != null)
+				{
+					m_OnTotalBet(TotalBet);
+				}
+			}
+		}
+	}
 
 	public bool CanIncreaseLines()
 	{
@@ -56,34 +87,12 @@ public class Game : MonoBehaviour
 
 	public void IncreaseLines()
 	{
-		if (CanIncreaseLines())
-		{
-			m_Lines++;
-			if (m_OnLines != null)
-			{
-				m_OnLines(m_Lines);
-			}
-			if (m_OnTotalbet != null)
-			{
-				m_OnTotalbet(TotalBet);
-			}
-		}
+		Lines++;
 	}
 
 	public void DecreaseLines()
 	{
-		if (CanDecreaseLines())
-		{
-			m_Lines--;
-			if (m_OnLines != null)
-			{
-				m_OnLines(m_Lines);
-			}
-			if (m_OnTotalbet != null)
-			{
-				m_OnTotalbet(TotalBet);
-			}
-		}
+		Lines--;
 	}
 
 	public void OnLines(System.Action<int> _Callback)
@@ -98,6 +107,26 @@ public class Game : MonoBehaviour
 	#region Bet
 
 	int m_Bet;
+	int Bet
+	{
+		get { return m_Bet; }
+		set
+		{
+			if ((value > m_Bet && CanIncreaseBet())
+			|| (value < m_Bet && CanDecreaseBet()))
+			{
+				m_Bet = value;
+				if (m_OnBet != null)
+				{
+					m_OnBet(m_Bet);
+				}
+				if (m_OnTotalBet != null)
+				{
+					m_OnTotalBet(TotalBet);
+				}
+			}
+		}
+	}
 
 	public bool CanIncreaseBet()
 	{
@@ -111,34 +140,12 @@ public class Game : MonoBehaviour
 
 	public void IncreaseBet()
 	{
-		if (CanIncreaseBet())
-		{
-			m_Bet += BetStep;
-			if (m_OnBet != null)
-			{
-				m_OnBet(m_Bet);
-			}
-			if (m_OnTotalbet != null)
-			{
-				m_OnTotalbet(TotalBet);
-			}
-		}
+		Bet += BetStep;
 	}
 
 	public void DecreaseBet()
 	{
-		if (CanDecreaseBet())
-		{
-			m_Bet -= BetStep;
-			if (m_OnBet != null)
-			{
-				m_OnBet(m_Bet);
-			}
-			if (m_OnTotalbet != null)
-			{
-				m_OnTotalbet(TotalBet);
-			}
-		}
+		Bet -= BetStep;
 	}
 
 	public void OnBet(System.Action<int> _Callback)
@@ -163,9 +170,9 @@ public class Game : MonoBehaviour
 	public void OnTotalBet(System.Action<int> _Callback)
 	{
 		_Callback(TotalBet);
-		m_OnTotalbet += _Callback;
+		m_OnTotalBet += _Callback;
 	}
-	event System.Action<int> m_OnTotalbet;
+	event System.Action<int> m_OnTotalBet;
 
 	#endregion
 }

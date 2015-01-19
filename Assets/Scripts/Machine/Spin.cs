@@ -10,7 +10,8 @@ public class Spin
 	public Spin(
 			Machine				_Machine, 
 			IEnumerable<Line>	_ActiveLines,
-			Random				_Random
+			Random				_Random,
+			int					_Bet
 		)
 	{
 		// Generating reels
@@ -29,6 +30,7 @@ public class Spin
 		}
 
 		// Matching combinations
+		float payout = 0f;
 		var combinationsWon = new List<Combination>();
 		foreach(var line in _ActiveLines)
 		{
@@ -39,10 +41,12 @@ public class Spin
 				if (combination != null)
 				{
 					combinationsWon.Add(combination);
+					payout += combinationType.Payout;
 				}
 			}
 		}
 		CombinationsWon = combinationsWon.AsReadOnly();
+		TotalWin = (int) Math.Floor(_Bet * payout);
 	}
 
 	#endregion
@@ -51,6 +55,7 @@ public class Spin
 
 	readonly public ReadOnlyCollection<Reel>		Reels;
 	readonly public ReadOnlyCollection<Combination>	CombinationsWon;
+	readonly public int								TotalWin;
 
 	#endregion
 
